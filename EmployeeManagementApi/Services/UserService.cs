@@ -87,6 +87,10 @@ namespace EmployeeManagementApi.Services
         public async Task<SupervisorViewModel> GetSupervisorById(string superId)
         {
             var userView = new SupervisorViewModel();
+            if(superId is null)
+            {
+                return userView;
+            }
             var user = await _userRepository.GetById(superId);
             if (user is null)
             {

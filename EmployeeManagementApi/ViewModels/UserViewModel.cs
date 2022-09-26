@@ -28,7 +28,6 @@ namespace EmployeeManagementApi.ViewModels
         public string Designation { get; set; }
         public string ReportsTo { get; set; }
         public string ProfileStatus { get; set; }
-        public DateTime AccountCreated { get; set; }
     }
     
 

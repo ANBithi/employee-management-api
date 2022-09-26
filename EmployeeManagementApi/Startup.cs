@@ -35,6 +35,7 @@ namespace EmployeeManagementApi
             services.AddScoped<IEmpProfQualificationRepository, EmpProfQualificationRepository>();
             services.AddScoped<IEmployeeExperienceRepository, EmployeeExperienceRepository>();
             services.AddScoped<IResignRepository, ResignRepository>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

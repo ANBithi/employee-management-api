@@ -274,7 +274,7 @@ namespace EmployeeManagementApi.Controllers
                     FatherName = request.FatherName,
                     MotherName = request.MotherName,
                     Gender = request.Gender,
-                    BirthDate = request.BirthDate,
+                    BirthDate = DateTime.Parse(request.BirthDate),
                     BirthPlace = request.BirthPlace,
                     BloodGroup = request.BloodGroup,
                     Nationality = request.Nationality,
@@ -297,6 +297,124 @@ namespace EmployeeManagementApi.Controllers
                 }
 
                 _employeeInfoRepository.Add(employeeInfo);
+                await _employeeInfoRepository.Commit();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        [HttpPost("UpdateInfo")]
+        public async Task<ActionResult<bool>> UpdateInfo(AddInfoRequest request)
+        {
+            try
+            {
+                var employeeInfo = await _employeeInfoRepository.GetSingle(x=>x.BelongsTo == request.BelongsTo);
+                
+                if(request.Pin != 0)
+                {
+                    employeeInfo.Pin = request.Pin;
+                }
+                if (request.Salutation != null)
+                {
+                    employeeInfo.Salutation = request.Salutation;
+                }
+                if (request.FirstName != null)
+                {
+                    employeeInfo.FirstName = request.FirstName;
+                }
+                if (request.LastName != null)
+                {
+                    employeeInfo.LastName = request.LastName;
+                }
+                if (request.FatherName != null)
+                {
+                    employeeInfo.FatherName = request.FatherName;
+                }
+                if (request.MotherName != null)
+                {
+                    employeeInfo.MotherName = request.MotherName;
+                }
+                if (request.Gender != null)
+                {
+                    employeeInfo.Gender = request.Gender;
+                }
+                if (request.BirthDate != null)
+                {
+                    employeeInfo.BirthDate = DateTime.Parse(request.BirthDate);
+                }
+                if (request.BirthPlace != null)
+                {
+                    employeeInfo.BirthPlace = request.BirthPlace;
+                }
+                if (request.BloodGroup != null)
+                {
+                    employeeInfo.BloodGroup = request.BloodGroup;
+                }
+
+                if (request.Nationality != null)
+                {
+                    employeeInfo.Nationality = request.Nationality;
+                }
+                if (request.Religion != null)
+                {
+                    employeeInfo.Religion = request.Religion;
+                }
+
+                if (request.MaritalStatus != null)
+                {
+                    employeeInfo.MaritalStatus = request.MaritalStatus;
+                }
+                if (request.NumberOfSons != 0)
+                {
+                    employeeInfo.NumberOfSons = request.NumberOfSons;
+                }
+                if (request.NumberOfDaughters != 0)
+                {
+                    employeeInfo.NumberOfDaughters = request.NumberOfDaughters;
+                }
+
+                if (request.CardNo != 0)
+                {
+                    employeeInfo.CardNo = request.CardNo;
+                }
+                if (request.TinNo != 0)
+                {
+                    employeeInfo.TinNo = request.TinNo;
+                }
+                if (request.PassportNo != 0)
+                {
+                    employeeInfo.PassportNo = request.PassportNo;
+                }
+
+                if (request.NidNumber != 0)
+                {
+                    employeeInfo.NidNumber = request.NidNumber;
+                }
+
+                if (request.DrivingLicense != 0)
+                {
+                    employeeInfo.DrivingLicense = request.DrivingLicense;
+                }
+                if (request.ExtraCurriculum != null)
+                {
+                    employeeInfo.ExtraCurriculum = request.ExtraCurriculum;
+                }
+                if (request.Remarks != null)
+                {
+                    employeeInfo.Remarks = request.Remarks;
+                }
+
+                if (request.MaritalStatus == "married")
+                {
+                    employeeInfo.SpouseName = request.SpouseName;
+                }
+
+                _employeeInfoRepository.Update(employeeInfo);
                 await _employeeInfoRepository.Commit();
 
                 return true;

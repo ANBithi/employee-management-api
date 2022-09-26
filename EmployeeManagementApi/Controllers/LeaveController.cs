@@ -114,7 +114,7 @@ namespace EmployeeManagementApi.Controllers
                         }
                     case "Moving House":
                         {
-                            if (userLeaveCount.LeftMovingHouseLeave - request.TotalDays <= 0)
+                            if (userLeaveCount.LeftMovingHouseLeave - request.TotalDays < 0)
                             {
                                 return applyResponse;
                             }
@@ -218,6 +218,10 @@ namespace EmployeeManagementApi.Controllers
             else
             {
                 allRequest = await _leaveRepository.GetAllAsync(x => x.BelongsTo == id && x.LeaveStatus == LeaveStatusEnum.Pending || x.LeaveStatus == LeaveStatusEnum.Accepted);
+                if(allRequest is null)
+                {
+                    return requestLeaves;
+                }
                 foreach (Leave leave in allRequest)
                 {
                     var leaveSupervisor = await _userRepository.GetById(leave.Supervisor);

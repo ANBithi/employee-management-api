@@ -46,7 +46,7 @@ namespace EmployeeManagementApi.ViewModels
         public string FatherName { get; set; }
         public string MotherName { get; set; }
         public string Gender { get; set; }
-        public DateTime BirthDate { get; set; }
+        public string BirthDate { get; set; }
         public string BirthPlace { get; set; }
         public string BloodGroup { get; set; }
         public string Nationality { get; set; }
