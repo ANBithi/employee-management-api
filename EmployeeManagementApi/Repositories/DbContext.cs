@@ -38,7 +38,7 @@ namespace EmployeeManagementApi.Repositories
 
         private static void DefineClassMaps()
         {
-            // Log.Information($"DefineClassMaps Called!");
+            // Mapping if needed.
             //IDbEntityMapper.Map();
             //UserMapper.Map();
             

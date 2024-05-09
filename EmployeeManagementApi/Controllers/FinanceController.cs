@@ -57,10 +57,8 @@ namespace EmployeeManagementApi.Controllers
                 {
                     BelongsTo = request.BelongsTo,
                     SalaryIssueDate = request.SalaryIssueDate,
-                    //SalaryLastMonth = (DateTime.DaysInMonth(DateTime.Today.Year,DateTime.Today.AddMonths(-1).Month) * request.SalaryPerHour),
                     Month = new DateTimeFormatInfo().GetMonthName(request.SalaryIssueDate.Month),
                     Year = request.SalaryIssueDate.Year,
-                    //currentMonth = new DateTimeFormatInfo().GetMonthName(DateTime.Today.Month),
                     BasicSalary = request.SalaryPerHour * request.TotalHours,
                     SalaryType = request.Type,
                     TotalWorkDays = request.TotalWorkDays,

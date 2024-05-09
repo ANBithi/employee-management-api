@@ -702,8 +702,6 @@ namespace EmployeeManagementApi.Controllers
         [HttpGet("Remove")]
         public async Task<ActionResult<bool>> Remove([FromQuery] string id, string repoType)
         {
-            //var leave = await _leaveRepository.GetById(id);
-            //var userLeaveCount = await _leaveCountRepository.GetSingle(x => x.BelongsTo == leave.BelongsTo);
 
             try
             {
